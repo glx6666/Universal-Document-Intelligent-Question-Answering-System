@@ -118,7 +118,7 @@ def create_indexes(collection_name: str, loader: BaseLoader, embedding_function:
 
     # 初始化记录管理器:管理与文档相关的元数据和检索信息，并将这些数据存储在一个SQL数据库中
     record_manager = SQLRecordManager(
-        f"chromadb/{collection_name}", db_url="sqlite:///db/record_manager_cache.db"
+        f"chromadb/{collection_name}", db_url=".db"
     )
     """在文档被索引到Chroma数据库之前，SQLRecordManager会管理这些文档的索引记录。它确保文档的索引状态被正确记录，避免重复索引或遗漏。"""
     logger.info(f"record_manager: {record_manager}")
@@ -158,3 +158,4 @@ def get_md5(input_string):
     hash_md5.update(input_string.encode('utf-8'))
     # 获取十六进制的哈希值
     return hash_md5.hexdigest()
+
